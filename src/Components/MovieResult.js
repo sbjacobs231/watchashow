@@ -1,36 +1,43 @@
 import React, { useState } from 'react';
 import '../Styles/MovieResult.css';
-import Modal from 'react-bootstrap/Modal';
+import BModal from './BModal';
 
 function MovieResult({ apiSearchResult }) {
+    // Handle image if it is NA
+    const handleImage = (imgSrc) => {
+        return imgSrc === 'N/A' ? './imgs/no_poster.png' : imgSrc;
+    }
     
+    // Modal Logic
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    // Get Movie Details
+    const [movieDetails, setMovieDetails] = useState({});
+
+    const getDetails = async() => {
+        const response = await fetch(`/mov/${apiSearchResult.imdbID}`);
+        const data = await response.json();
+        console.log(data);
+        setMovieDetails(data);
+        handleShow();
+    }
     
     return(
         <>
-            <div onClick={ handleShow }>
-                <img src={ apiSearchResult.Poster } alt={ apiSearchResult.imdbID } />
+            <div className='listing' onClick={ getDetails }>
+                <img src={ handleImage(apiSearchResult.Poster) } alt={ apiSearchResult.imdbID } />
                 <p>{ apiSearchResult.Title }</p>
                 <p>{ apiSearchResult.Year }</p>
                 <p>{ apiSearchResult.Type }</p>
             </div>
 
-            <Modal 
-                show={ show } 
-                onHide={ handleClose }
-                size="xl">
-                <Modal.Header closeButton closeLabel=''>
-                    <Modal.Title></Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <img src={ apiSearchResult.Poster } alt={ apiSearchResult.imdbID } />
-                    <p>{ apiSearchResult.Title }</p>
-                    <p>{ apiSearchResult.Year }</p>
-                    <p>{ apiSearchResult.Type }</p>
-                </Modal.Body>
-            </Modal>
+            <BModal 
+                show={show} 
+                handleClose={ handleClose } 
+                movieDetails={ movieDetails } 
+                handleImage={ handleImage } />
         </>
     );
 }
