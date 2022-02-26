@@ -1,5 +1,5 @@
 ### Frontend Movie Application
-This is the frontend React application.
+This is the frontend React application that allows users to search for movies and gather information about them. It's an application that resembles IMDB.
 It works in conjunction with a backend microservice,
 which is not part of this repo.
 
