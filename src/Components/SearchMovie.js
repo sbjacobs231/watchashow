@@ -7,9 +7,7 @@ function SearchMovie({ setTitle, setYear }) {
     // And trigger API call.
     const handleSubmit = (event) => {
         event.preventDefault();
-        // TEMP CODE UNTIL API SERVICE IS MADE
-        const tempTitle = event.target.title.value.toLowerCase();
-        setTitle(tempTitle);
+        setTitle(event.target.title.value);
         setYear(event.target.year.value);
     }
 
