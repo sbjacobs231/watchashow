@@ -1,3 +1,21 @@
 .listing {
     cursor: pointer;
+    display: inline-block;
+    height: 450px;
+    width: 300px;
+    vertical-align: top;
+}
+
+.listing:hover {
+    opacity: 80%;
+    background-color: #ccc;
+}
+
+.listing img {
+    height: 300px;
+    margin: 10px;
+}
+
+.listing p {
+    margin: 5px;
 }

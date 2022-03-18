@@ -1,0 +1,14 @@
+.modal-body > img {
+    width: 30%;
+    vertical-align: top;
+}
+
+.details {
+    width: 70%;
+    display: inline-block;
+    padding-left: 40px;
+}
+
+.modal-body > p {
+    margin-top: 20px;
+}

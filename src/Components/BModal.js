@@ -1,4 +1,5 @@
 import Modal from 'react-bootstrap/Modal';
+import '../Styles/BModal.css';
 
 function BModal({ show, handleClose, movieDetails, handleImage }) {
     
@@ -25,16 +26,18 @@ function BModal({ show, handleClose, movieDetails, handleImage }) {
             </Modal.Header>
             <Modal.Body>
                 <img src={ handleImage(movieDetails.Poster) } alt={ movieDetails.imdbID } />
-                <p>Released: { movieDetails.Year }</p>
-                <p>Type: { movieDetails.Type }</p>
-                <p>Actors: { movieDetails.Actors }</p>
-                <p>Director: { movieDetails.Director }</p>
-                <p>Genre: { movieDetails.Genre }</p>
-                <p>Country: { movieDetails.Country }</p>
+                <div className='details'>
+                    <p>Released: { movieDetails.Year }</p>
+                    <p>Type: { movieDetails.Type }</p>
+                    <p>Actors: { movieDetails.Actors }</p>
+                    <p>Director: { movieDetails.Director }</p>
+                    <p>Genre: { movieDetails.Genre }</p>
+                    <p>Country: { movieDetails.Country }</p>
+                    <p>Runtime: { movieDetails.Runtime }</p>
+                    <p>Rated: { movieDetails.Rated }</p> 
+                    { showRatings() }
+                </div>
                 <p>Plot: { movieDetails.Plot }</p>
-                <p>Runtime: { movieDetails.Runtime }</p>
-                <p>Rated: { movieDetails.Rated }</p> 
-                { showRatings() }
             </Modal.Body>
         </Modal>
     );
